@@ -10,6 +10,7 @@ import {
 import { scaleLinear } from "d3-scale";
 import request from "axios";
 import mapJSON from "./110m";
+import decorJSON from "./decor-styles";
 
 const wrapperStyles = {
   width: "100%",
@@ -25,6 +26,7 @@ class Map extends Component {
   constructor() {
     super();
     this.state = {
+      style: "",
       cities: [],
     };
     this.fetchCities = this.fetchCities.bind(this);
@@ -33,13 +35,9 @@ class Map extends Component {
     this.fetchCities()
   }
   fetchCities() {
-    request
-      .get("https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/examples/bubbles-map/static/world-most-populous-cities.json")
-      .then(res => {
-        this.setState({
-          cities: res.data,
-        })
-      })
+    this.setState({
+      cities: decorJSON,
+    });
   }
   render() {
     return (

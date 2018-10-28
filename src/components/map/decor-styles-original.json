@@ -1,0 +1,8 @@
+[
+  { "name": "Tokyo", "coordinates": [139.6917,35.6895], "style": 37843000 },
+  { "name": "Jakarta", "coordinates": [106.8650,-6.1751], "style": 30539000 },
+  { "name": "Delhi", "coordinates": [77.1025,28.7041], "style": 24998000 },
+  { "name": "Seoul", "coordinates": [126.9780,37.5665], "style": 23480000 },
+  { "name": "Manila", "coordinates": [120.9842,14.5995], "style": 24123000 },
+  { "name": "Shanghai", "coordinates": [121.4737,31.2304], "style": 23416000 },
+]
