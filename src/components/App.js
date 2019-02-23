@@ -7,9 +7,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectedDecorStyle: "scandinavian",
+      activeDecorStyle: "scandinavian",
     };
+    this.toggleDecorStyle = this.toggleDecorStyle.bind(this);
   }
+
+  toggleDecorStyle(decorStyle){
+    this.setState({ activeDecorStyle: "rustic" });
+  }
+
   render() {
     const decorStyles = [
       "Scandinavian",
@@ -27,8 +33,8 @@ class App extends Component {
     ];
     return (
       <div className="App">
-        <Carousel selectedDecorStyle={this.state.selectedDecorStyle} decorStyles={decorStyles} />
-        <Map selectedDecorStyle={this.state.selectedDecorStyle}/>
+        <Carousel activeDecorStyle={this.state.activeDecorStyle} decorStyles={decorStyles} toggleDecorStyle={this.toggleDecorStyle} />
+        <Map activeDecorStyle={this.state.activeDecorStyle}/>
       </div>
     );
   }

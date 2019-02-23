@@ -12,6 +12,7 @@ import mapJSON from "./data/110m";
 import decorCSV from "./data/dummy-data.csv";
 import PapaParse from "papaparse";
 import tooltip from "wsdm-tooltip";
+import '../../styles/Map.css';
 
 const cityScale = scaleLinear()
   .domain([100,1000])
@@ -109,7 +110,7 @@ class Map extends Component {
             <Markers>
               {
                 this.state.decorData.map((city, i) =>
-                  city[this.props.selectedDecorStyle].length !== 0 && (
+                  city[this.props.activeDecorStyle].length !== 0 && (
                     <Marker key={i}
                             marker={{
                               coordinates: [ city.long, city.lat ],
@@ -131,7 +132,7 @@ class Map extends Component {
                     <circle
                       cx={0}
                       cy={0}
-                      r={cityScale(city[this.props.selectedDecorStyle])}
+                      r={cityScale(city[this.props.activeDecorStyle])}
                     />
                   </Marker>
                 ))

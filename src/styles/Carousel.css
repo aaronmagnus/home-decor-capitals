@@ -1,0 +1,15 @@
+.n-carousel__item img {
+    margin: 0 auto;
+}
+.n-carousel__item--active img {
+    border: 1px solid;
+}
+
+.n-carousel__item span {
+    display: block;
+    text-align: center;
+}
+
+.n-carousel__item--active span {
+    border: 1px solid;
+}
