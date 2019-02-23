@@ -13,12 +13,6 @@ import decorCSV from "./data/dummy-data.csv";
 import PapaParse from "papaparse";
 import tooltip from "wsdm-tooltip";
 
-const wrapperStyles = {
-  width: "100%",
-  maxWidth: 1080,
-  margin: "0 auto",
-};
-
 const cityScale = scaleLinear()
   .domain([100,1000])
   .range([6,20]);
@@ -27,12 +21,11 @@ class Map extends Component {
   constructor() {
     super();
     this.state = {
-      decorStyle: "scandinavian",
-      data: [],
+      decorData: [],
     };
     this.updateData = this.updateData.bind(this);
-    this.handleMouseMove = this.handleMouseMove.bind(this)
-    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   componentDidMount() {
@@ -50,9 +43,9 @@ class Map extends Component {
   }
 
   updateData(result) {
-    const data = result.data;
+    const decorData = result.data;
     this.setState({
-      data: data,
+      decorData: decorData,
     });
   }
 
@@ -71,7 +64,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={wrapperStyles}>
+      <div className="n-map">
         <ComposableMap
           projectionConfig={{ scale: 205 }}
           width={980}
@@ -115,8 +108,8 @@ class Map extends Component {
             </Geographies>
             <Markers>
               {
-                this.state.data.map((city, i) =>
-                  city[this.state.decorStyle].length !== 0 && (
+                this.state.decorData.map((city, i) =>
+                  city[this.props.selectedDecorStyle].length !== 0 && (
                     <Marker key={i}
                             marker={{
                               coordinates: [ city.long, city.lat ],
@@ -138,7 +131,7 @@ class Map extends Component {
                     <circle
                       cx={0}
                       cy={0}
-                      r={cityScale(city[this.state.decorStyle])}
+                      r={cityScale(city[this.props.selectedDecorStyle])}
                     />
                   </Marker>
                 ))
