@@ -4,17 +4,20 @@ import Map from './map/Map';
 import Carousel from './common/Carousel';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activeDecorStyle: "scandinavian",
     };
     this.toggleDecorStyle = this.toggleDecorStyle.bind(this);
   }
 
-  toggleDecorStyle(decorStyle){
-    this.setState({ activeDecorStyle: "rustic" });
-  }
+  // Function to test a change in the activeDecorStyle
+  toggleDecorStyle(decorStyle) {
+    let newStyle = decorStyle.toLowerCase();
+    console.log(newStyle);
+    this.setState({ activeDecorStyle: newStyle });
+  };
 
   render() {
     const decorStyles = [
@@ -24,7 +27,6 @@ class App extends Component {
       "Minimalist",
       "Vintage",
       "Mid-Century Modern",
-      "Example",
       "Coastal",
       "Industrial",
       "Traditional",
